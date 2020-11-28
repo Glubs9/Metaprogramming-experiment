@@ -23,19 +23,19 @@ If we go back to the triple example from earlier. "triple dup dup" the program w
 (the leftmost dup then gets popped and ran which duplicates the rightmost dup and the stack becomes)                
 \[3, dup, dup]                   
 In this example you can quickly see that for any variable/function that is more than 2 instructions long the instructions will edit themselves instead of the top of the stack. To try to get around this limitation I thought of a few possibilities but they all were effectively interchangeable so I decided to go with adding a predefined function/variable that calls the function/variable artificially before it gets called naturally. I called this function exec.                    
-if we were to replace triple with triple dup exec dup the program will now run as follows.                          
-\[3, triple]
-\[3, dup, exec] (once exec gets encountered in the triple definition it will pop it and the previous instruction and run it)
+if we were to replace triple with triple dup exec dup the program will now run as follows.                           
+\[3, triple]                                         
+\[3, dup, exec] (once exec gets encountered in the triple definition it will pop it and the previous instruction and run it)                                    
 \[3, 3] (and then the rest of triple gets added to the stack)                   
 \[3, 3, dup] (and dup gets naturally called by the interpreter)                  
 \[3, 3, 3] (the program would now call 3 but we can stop here for the sake of the example)                      
 This seemed to have solved the problem but if you look carefully it has effectively removed the core idea of the language and has created a separation between how the code runs and how it is written.                
 This can be demonstrated with another example.                  
 if we have quadruple defined as "quadruple triple exec dup" then the program will run as follows.                         
-\[3, quadruple]
-\[3, triple, exec] (exec has been encountered so it will now execute triple)
-\[3, dup, exec] (exec has been encountered so it will now execute dup)
-\[3, 3] (it will now have to add the rest of triple, but we can stop here for the sake of the example)        
+\[3, quadruple]                                            
+\[3, triple, exec] (exec has been encountered so it will now execute triple)                                   
+\[3, dup, exec] (exec has been encountered so it will now execute dup)                                           
+\[3, 3] (it will now have to add the rest of triple, but we can stop here for the sake of the example)                                    
 in this example quadruple gets called which calls triple and we have now created a call stack within this exec state. This has effectively destroyed the original intent of the language and, in my eyes, has shown that it is impossible to have a complete integration of code and data.                               
 
 # conclusion
