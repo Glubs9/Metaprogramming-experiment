@@ -40,7 +40,7 @@ in this example quadruple gets called which calls triple and we have now created
 
 # conclusion
 This is in no means a thorough or mathematical proof but it was fun to do nonetheless.                    
-A thrown together interpreter and some example programs have also been added to this repository.                
+A thrown together interpreter and some example programs have also been added to this repository (it does require python 3.9 as it uses the dictionary union operator | but if you really want to run it on other versions it is trivial to replace).                 
 Although my mind has been made up I may have missed something obvious! Feel free to give this language a shot and see if you can solve the problem yourself! Tell me if you can think of any counterexamples or anything at all! Feel free to add to this repository in any way you want! I am not that active though so it may take a bit for your contribution to be added.                       
                            
 Thanks for reading through this!
